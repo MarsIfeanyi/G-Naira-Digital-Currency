@@ -79,7 +79,7 @@ const BlacklistUserPage = () => {
             <input
               type="text"
               value={feedback}
-              placeholder="Enter Address (account) to Blacklist"
+              placeholder="Enter Address (account) to UnBlacklist"
               required
               onChange={(e) => setFeedback(e.target.value)}
               className="rounded-lg p-2 border border-blue-600 w-72"
@@ -88,31 +88,9 @@ const BlacklistUserPage = () => {
               type="submit"
               className="bg-blue-600 rounded-xl py-2 px-4 text-white ml-2   "
             >
-              Blacklist
-            </button>
-          </div>
-
-          {/* <div className="space-y-3 flex flex-col md:flex-row">
-            <label htmlFor="feedback" className="text-blue-600 mr-2">
-              Address(account)
-            </label>
-
-            <input
-              type="text"
-              value={feedback}
-              placeholder="Enter Address (account) to UnBlacklist"
-              required
-              onChange={(e) => setFeedback(e.target.value)}
-              className="rounded-lg p-2 border border-blue-600 w-80"
-            />
-
-            <button
-              type="submit"
-              className="bg-blue-600 rounded-xl py-2 px-4 text-white ml-2 "
-            >
               UnBlacklist
             </button>
-          </div> */}
+          </div>
         </div>
       </form>
     </div>
