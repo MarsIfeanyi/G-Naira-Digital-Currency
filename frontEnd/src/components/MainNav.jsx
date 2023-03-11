@@ -12,13 +12,13 @@ const MainNav = () => {
         </Link>
 
         <Link to="/burn-token">
-          <button className="bg-blue-600 rounded-xl text-white  py-2 px-3 text-xl ">
+          <button className="bg-red-500 rounded-xl text-white  py-2 px-3 text-xl ">
             Burn Token
           </button>
         </Link>
 
         <Link to="/blacklist">
-          <button className="bg-blue-600 rounded-xl text-white  py-2 px-3 text-xl">
+          <button className="bg-blue-900 rounded-xl text-white  py-2 px-3 text-xl">
             BlackList User
           </button>
         </Link>
