@@ -64,7 +64,7 @@ const BlacklistUserPage = () => {
             />
             <button
               type="submit"
-              className="bg-blue-600 rounded-xl py-2 px-4 text-white ml-2   "
+              className="bg-blue-900 rounded-xl py-2 px-4 text-white ml-2   "
             >
               Blacklist
             </button>
@@ -86,7 +86,7 @@ const BlacklistUserPage = () => {
             />
             <button
               type="submit"
-              className="bg-blue-600 rounded-xl py-2 px-4 text-white ml-2   "
+              className="bg-blue-400 rounded-xl py-2 px-4 text-white ml-2   "
             >
               UnBlacklist
             </button>
