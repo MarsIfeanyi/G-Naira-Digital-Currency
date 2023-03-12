@@ -5,7 +5,7 @@ import Web3Modal from "web3modal";
 import { contractABI, contractAddress } from "../constants/config";
 
 const MintTokenPage = () => {
-  const [feedback, setFeedback] = useState("");
+  const [mintToken, setMintT] = useState("");
   const [transactionHash, setTransactionHash] = useState();
 
   const handleSubmit = async (e) => {
