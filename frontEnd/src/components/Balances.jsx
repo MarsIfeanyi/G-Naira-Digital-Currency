@@ -66,3 +66,5 @@ const Balances = () => {
 };
 
 export default Balances;
+
+// Todo: Fix bug on Balances, not rendering the correct data
