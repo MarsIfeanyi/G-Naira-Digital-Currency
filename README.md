@@ -4,7 +4,8 @@
 
 There is a rising issue concerning the country’s financial sector. To solve this, the government decided to move its financial system to the Blockchain for better transparency and accountability.
 
-The #G-Naira(gNGN) is an digital currency that uses the ERC-20 token standard.
+The #G-Naira(gNGN) is a digital currency that uses the ERC-20 token standard.
+
 The contract has a GOVERNOR who has the only right/access to:
 
 - Mint new token currency
