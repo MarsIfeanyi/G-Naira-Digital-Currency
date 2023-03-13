@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import MintTokenPage from "./pages/MintTokenPage";
 import BurnTokenPage from "./pages/BurnTokenPage";
 import BlacklistUserPage from "./pages/BlacklistUserPage";
+import TransferPage from "./pages/TransferPage";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/mint-token" element={<MintTokenPage />} />
         <Route path="/burn-token" element={<BurnTokenPage />} />
         <Route path="/blacklist" element={<BlacklistUserPage />} />
+        <Route path="/transfer" element={<TransferPage />} />
       </Routes>
       <Footer />
     </div>
