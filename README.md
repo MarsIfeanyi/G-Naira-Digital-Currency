@@ -16,7 +16,7 @@ The contract also has a Multi-Signature Wallet for secure Minting and Burning of
 
 # Deployment
 
-The contract was deployed on the [sepolia-Testnet](https://sepolia.etherscan.io/address/0x68073d37e4F50aF4346C3ADCDBa7A7a5F3a58B84#code) with a TotalSupply of 100000000 and Maximum Supply of 1000000000, using [Hardhat](https://hardhat.org/) and [Alchemy](https://www.alchemy.com/) as the node provider.
+The contract was deployed on the [sepolia-Testnet](https://sepolia.etherscan.io/address/0x68073d37e4F50aF4346C3ADCDBa7A7a5F3a58B84#code) with a TotalSupply of 100000000 and Maximum Supply of 1000000000, using [Hardhat](https://hardhat.org/) as the dev environment and [Alchemy](https://www.alchemy.com/) as the node provider.
 
 ## EtherScan-Url
 
