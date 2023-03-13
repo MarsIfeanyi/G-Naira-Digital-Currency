@@ -50,9 +50,17 @@ The Replit url contains just the code.
 ### Hint Before use:
 
 Only the Governor has access to execute major functions or EVM calls.
-For full interaction with the Dapp, I recommend you re-deploy the smart contract using your own Private Key and API and then copy the contract Address and ABI that is generated and replaced it with the contract Address and ABI inside the config.js file inside constants of the frontEnd.
+For full interaction with the Dapp, I recommend you re-deploy the smart contract using your own Private Key and API and then copy the contract Address and ABI that is generated and replaced it with the contract Address and ABI inside the config.js file inside constants folder of the frontEnd.
 
 ## Explanation How it Works | Youtube
+
+### Remix and Solidity:
+
+- https://youtu.be/H-rdfGbOMEs
+
+### ReactJs and Solidity(dApp):
+
+- https://youtu.be/oJxQ04YXJOc
 
 ## Sample Outputs A: Remix IDE
 
