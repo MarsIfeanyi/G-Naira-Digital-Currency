@@ -2,6 +2,7 @@ import { ethers } from "ethers";
 import { useState } from "react";
 import Web3Modal from "web3modal";
 import Balances from "../components/Balances";
+import TotalSupply from "../components/TotalSupply";
 
 import { contractABI, contractAddress } from "../constants/config";
 
@@ -83,6 +84,8 @@ const MintTokenPage = () => {
         </div>
       </form>
       <h3 className="text-center justify-center mt-8">{transactionHash}</h3>
+
+      <TotalSupply />
 
       <Balances />
     </div>
