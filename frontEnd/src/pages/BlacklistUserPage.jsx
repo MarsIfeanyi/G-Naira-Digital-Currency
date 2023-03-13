@@ -1,12 +1,13 @@
 import { ethers } from "ethers";
 import { useState } from "react";
 import Web3Modal from "web3modal";
+import UnBlacklistUser from "../components/UnBlacklistUser";
 
 import { contractABI, contractAddress } from "../constants/config";
 
 const BlacklistUserPage = () => {
-  const [feedback, setFeedback] = useState("");
-  const [transactionHash, setTransactionHash] = useState();
+  const [account, setAccount] = useState("");
+  const [transactionHash, setTransactionHash] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,80 +20,51 @@ const BlacklistUserPage = () => {
     const signer = provider.getSigner();
     const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
-    //const transaction = await contract.sendFeedBack(feedback);
+    const BlacklistUserTransaction = await contract.blacklistAddress(account);
 
-    setTransactionHash(`
-            Mining... ${transaction.hash}
-            
-            `);
-    await transaction.wait();
-    setTransactionHash(
-      `
-            Mined... ${transaction.hash}`
-    );
+    setTransactionHash(`Mining... ${BlacklistUserTransaction.hash}`);
+    await BlacklistUserTransaction.wait();
+    setTransactionHash(`Mined... ${BlacklistUserTransaction.hash}`);
 
-    setFeedback("");
+    setAccount("");
   };
 
   return (
-    <div
-      className="mt-20 
-    "
-    >
-      <h1
-        className="justify-center text-3xl mx-auto items-center text-center text-blue-600 
-      "
-      >
-        Blacklist Address
-      </h1>
-
+    <div className="mt-10">
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col space-y-6  space-x-0  md:space-x-4  mx-auto items-center justify-center mt-10">
+        <div className="flex flex-col space-y-6 md:space-x-4 mx-auto items-center justify-center mt-14">
+          <h1 className="justify-center text-3xl mx-auto items-center text-center text-blue-600">
+            Blacklist Address
+          </h1>
+
           {/* Individual Container */}
-          <div className="space-y-2 md:space-y-0 flex-col md:flex-row  ">
-            <label htmlFor="feedback" className="text-blue-600 mr-2">
-              Address(account)
+          <div className="space-y-2 flex flex-col">
+            <label htmlFor="account" className="text-blue-600 mr-2">
+              Address (account)
             </label>
 
             <input
               type="text"
-              value={feedback}
-              placeholder="Enter Address (account) to Blacklist"
+              value={account}
+              placeholder="Enter Address (account)"
               required
-              onChange={(e) => setFeedback(e.target.value)}
+              onChange={(e) => setAccount(e.target.value)}
               className="rounded-lg p-2 border border-blue-600 w-72"
             />
+
             <button
               type="submit"
-              className="bg-blue-900 rounded-xl py-2 px-4 text-white ml-2   "
+              className="bg-blue-900 rounded-xl py-2 px-4 text-white ml-2"
             >
               Blacklist
             </button>
           </div>
-          {/* Individual Container */}
-
-          <div className="space-y-2 md:space-y-0 flex-col md:flex-row  ">
-            <label htmlFor="feedback" className="text-blue-600 mr-2">
-              Address(account)
-            </label>
-
-            <input
-              type="text"
-              value={feedback}
-              placeholder="Enter Address (account) to UnBlacklist"
-              required
-              onChange={(e) => setFeedback(e.target.value)}
-              className="rounded-lg p-2 border border-blue-600 w-72"
-            />
-            <button
-              type="submit"
-              className="bg-blue-400 rounded-xl py-2 px-4 text-white ml-2   "
-            >
-              UnBlacklist
-            </button>
-          </div>
         </div>
       </form>
+
+      <h3 className="text-center justify-center mt-8">{transactionHash}</h3>
+
+      <UnBlacklistUser />
     </div>
   );
 };
