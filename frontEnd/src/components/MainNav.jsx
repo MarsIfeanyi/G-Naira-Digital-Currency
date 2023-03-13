@@ -22,6 +22,12 @@ const MainNav = () => {
             BlackList User
           </button>
         </Link>
+
+        <Link to="/transfer">
+          <button className="bg-green-800 rounded-xl text-white  py-2 px-3 text-xl">
+            Transfer
+          </button>
+        </Link>
       </div>
     </div>
   );
