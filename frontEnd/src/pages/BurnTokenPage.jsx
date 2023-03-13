@@ -1,12 +1,15 @@
 import { ethers } from "ethers";
 import { useState } from "react";
 import Web3Modal from "web3modal";
+import Balances from "../components/Balances";
 
 import { contractABI, contractAddress } from "../constants/config";
 
 const BurnTokenPage = () => {
-  const [feedback, setFeedback] = useState("");
-  const [transactionHash, setTransactionHash] = useState();
+  const [recipient, setRecipient] = useState("");
+  const [amount, setAmount] = useState("");
+
+  const [transactionHash, setTransactionHash] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,49 +22,57 @@ const BurnTokenPage = () => {
     const signer = provider.getSigner();
     const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
-    //const transaction = await contract.sendFeedBack(feedback);
+    if (recipient && amount) {
+      const burnTokenTransaction = await contract.burnTokenCurrency(
+        recipient,
+        amount
+      );
 
-    setTransactionHash(`
-            Mining... ${transaction.hash}
-            
-            `);
-    await transaction.wait();
-    setTransactionHash(
-      `
-            Mined... ${transaction.hash}`
-    );
+      setTransactionHash(`Mining... ${burnTokenTransaction.hash}`);
+      await burnTokenTransaction.wait();
+      setTransactionHash(`Mined... ${burnTokenTransaction.hash}`);
 
-    setFeedback("");
+      setRecipient("");
+      setAmount("");
+    }
   };
 
   return (
-    <div
-      className="mt-20 
-    "
-    >
-      <h1
-        className="justify-center text-3xl mx-auto items-center text-center text-blue-600 
-      "
-      >
+    <div className="mt-10">
+      <h1 className="justify-center text-3xl mx-auto items-center text-center text-blue-600">
         Burn Token Currency
       </h1>
 
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col space-y-6  space-x-0  md:space-x-4  mx-auto items-center justify-center mt-10">
+        <div className="flex flex-col space-y-6 md:space-x-4 mx-auto items-center justify-center mt-14">
           {/* Individual Container */}
-          <div className="space-y-2 md:space-y-0 flex-col md:flex-row  ">
-            <label htmlFor="feedback" className="text-blue-600 mr-2">
-              Address(account)
+          <div className="space-y-2 flex flex-col">
+            <label htmlFor="recipient" className="text-blue-600 mr-2">
+              Address (account)
             </label>
 
             <input
               type="text"
-              value={feedback}
-              placeholder="Enter Address (account) and Amount"
+              value={recipient}
+              placeholder="Enter Address (account)"
               required
-              onChange={(e) => setFeedback(e.target.value)}
+              onChange={(e) => setRecipient(e.target.value)}
               className="rounded-lg p-2 border border-blue-600 w-72"
             />
+
+            <label htmlFor="amount" className="text-blue-600 mr-2">
+              Amount
+            </label>
+
+            <input
+              type="number"
+              value={amount}
+              placeholder="Enter Amount"
+              required
+              onChange={(e) => setAmount(e.target.value)}
+              className="rounded-lg p-2 border border-blue-600 w-72"
+            />
+
             <button
               type="submit"
               className="bg-red-500 rounded-xl py-2 px-4 text-white ml-2   "
@@ -71,6 +82,10 @@ const BurnTokenPage = () => {
           </div>
         </div>
       </form>
+
+      <h3 className="text-center justify-center mt-8">{transactionHash}</h3>
+
+      <Balances />
     </div>
   );
 };
